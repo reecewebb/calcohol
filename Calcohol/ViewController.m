@@ -190,6 +190,9 @@
     // Calls the superclass's implementation
     [super viewDidLoad];
     
+    // Set the title
+    self.title = NSLocalizedString(@"Wine", @"wine");
+    
     // Set our primary view's background color to lightGrayColor
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -290,6 +293,11 @@
     
     NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of wine.", nil), numberOfBeers, beerText, numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
     self.resultLabel.text = resultText;
+    
+    // Update the Title based on slider value
+    
+    NSString *titleText = [NSString stringWithFormat:NSLocalizedString(@"Wine (%.1f %@)", nil), numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
+    self.title = titleText;
 }
 
 - (void)buttonPressed:(UIButton *)sender {
