@@ -17,6 +17,19 @@
 
 @implementation ViewController
 
+- (instancetype) init {
+    self = [super init];
+    
+    if (self) {
+        self.title = NSLocalizedString(@"Wine", @"wine");
+    }
+    
+    // Since we don't have icons, let's move the title to the middle of the tab bar
+    [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -18)];
+    
+    return self;
+}
+
 - (void)loadView {
     // Allocate and initialize the all-encompassing view
     self.view = [[UIView alloc] init];
@@ -190,8 +203,7 @@
     // Calls the superclass's implementation
     [super viewDidLoad];
     
-    // Set the title
-    self.title = NSLocalizedString(@"Wine", @"wine");
+    self.view.backgroundColor = [UIColor colorWithRed:0.741 green:0.925 blue:0.714 alpha:1]; /*#bdecb6*/
     
     // Set our primary view's background color to lightGrayColor
     self.view.backgroundColor = [UIColor whiteColor];
@@ -298,6 +310,9 @@
     
     NSString *titleText = [NSString stringWithFormat:NSLocalizedString(@"Wine (%.1f %@)", nil), numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
     self.title = titleText;
+    
+    // Display a badge icon
+    [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", (int) sender.value]];
 }
 
 - (void)buttonPressed:(UIButton *)sender {
